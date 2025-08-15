@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shukla GPT — Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div id="formulaLayer" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">⚔️ Shukla GPT</div>
+    <div class="sub">Jarvis-style Study & Trainer</div>
+    <div class="actions">
+      <button id="micBtn" class="btn ghost">🎤 Mic</button>
+      <button id="ariseBtn" class="btn">Arise</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: Stats (40%) -->
+    <aside class="panel stats-panel">
+      <h2>Player Stats</h2>
+
+      <label class="field">
+        <div class="label">Name</div>
+        <input id="nameInput" class="input" placeholder="Your name" />
+      </label>
+
+      <label class="field">
+        <div class="label">Class</div>
+        <input id="classInput" class="input" value="Class 12 (PCM + English)" />
+      </label>
+
+      <div class="grid2">
+        <label class="field">
+          <div class="label">Total Chapters</div>
+          <input id="totalChInput" class="input" type="number" min="0" value="0" />
+        </label>
+        <label class="field">
+          <div class="label">Completed</div>
+          <input id="doneChInput" class="input" type="number" min="0" value="0" />
+        </label>
+      </div>
+
+      <div class="stat-cards">
+        <div class="statCard"><div class="statLabel">Level</div><div id="levelVal" class="statBig">0</div><div class="bar"><span id="levelBar"></span></div></div>
+        <div class="statCard"><div class="statLabel">Focus</div><div id="focusVal" class="statBig">0</div><div class="bar"><span id="focusBar"></span></div></div>
+        <div class="statCard"><div class="statLabel">Discipline</div><div id="discVal" class="statBig">0</div><div class="bar"><span id="discBar"></span></div></div>
+        <div class="statCard"><div class="statLabel">Chapters Left</div><div id="leftVal" class="statBig">0</div><div class="bar"><span id="leftBar"></span></div></div>
+      </div>
+
+      <h3>Achievements</h3>
+      <div id="badges" class="badges"></div>
+
+      <div class="row actions-row">
+        <button id="saveBtn" class="btn">Save</button>
+        <button id="addDone" class="btn ghost">+1 Done</button>
+        <button id="boostFocus" class="btn ghost">+5 Focus</button>
+        <button id="boostDisc" class="btn ghost">+5 Disc</button>
+      </div>
+    </aside>
+
+    <!-- RIGHT: AI orb + chat (60%) -->
+    <section class="panel ai-panel">
+      <div class="ai-top">
+        <div class="greeting" id="greeting">Welcome — say "Arise" or press Arise.</div>
+        <div class="mode-select">
+          <label for="mode">Mode</label>
+          <select id="mode">
+            <option value="friend">Friend</option>
+            <option value="teacher">Teacher</option>
+            <option value="gym">Gym Trainer</option>
+            <option value="mentor">Mentor</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="ai-area">
+        <div id="orb" class="orb" aria-live="polite">
+          <div id="orbGlow" class="orbGlow"></div>
+          <div id="orbCore" class="orbCore"></div>
+          <div id="orbRing" class="orbRing"></div>
+          <div id="orbState" class="orbState">Idle</div>
+        </div>
+
+        <div class="chat-box">
+          <div id="chatLog" class="chatLog"><div class="muted">AI responses will appear here.</div></div>
+
+          <div class="chatControls">
+            <input id="promptInput" class="input" placeholder="Type a question or speak" />
+            <button id="sendBtn" class="btn">Send</button>
+            <button id="speakBtn" class="btn alt">Ask & Speak</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-chart panel small-panel">
+        <h4>Weekly XP</h4>
+        <canvas id="xpChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Shukla GPT • Keep your OpenAI key secure (serverless)</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
