@@ -1,3 +1,15 @@
+export async function handler(event) {
+  console.log("Loaded key? ", !!process.env.OPENAI_API_KEY);
+
+  if (!process.env.OPENAI_API_KEY) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "OPENAI_API_KEY not set" }),
+    };
+  }
+
+  // ...rest of code
+}
 // netlify/functions/chat.js
 export async function handler(event) {
   try {
@@ -47,3 +59,4 @@ export async function handler(event) {
     return { statusCode: 500, body: JSON.stringify({ error: err.message || String(err) }) };
   }
 }
+
